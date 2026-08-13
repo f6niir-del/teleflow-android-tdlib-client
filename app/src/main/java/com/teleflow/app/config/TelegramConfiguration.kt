@@ -22,6 +22,37 @@ data class TelegramConfiguration(
     }
 }
 
+/** Stores Telegram API credentials only in Android Keystore-backed encrypted preferences. */
+class TelegramConfigurationStore(context: Context) {
+    private val preferences = EncryptedSharedPreferences.create(
+        context,
+        "teleflow_telegram_config",
+        MasterKey.Builder(context).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build(),
+        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+    )
+
+    fun load(): TelegramConfiguration {
+        val defaults = TelegramConfiguration.fromBuildConfig()
+        return TelegramConfiguration(
+            apiId = preferences.getInt(API_ID_KEY, defaults.apiId),
+            apiHash = preferences.getString(API_HASH_KEY, defaults.apiHash).orEmpty()
+        )
+    }
+
+    fun save(configuration: TelegramConfiguration) {
+        preferences.edit()
+            .putInt(API_ID_KEY, configuration.apiId)
+            .putString(API_HASH_KEY, configuration.apiHash)
+            .commit()
+    }
+
+    private companion object {
+        const val API_ID_KEY = "telegram_api_id"
+        const val API_HASH_KEY = "telegram_api_hash"
+    }
+}
+
 /** Stores the TDLib database key in Android Keystore-backed encrypted storage. */
 class DatabaseKeyProvider(context: Context) {
     private val preferences = EncryptedSharedPreferences.create(
