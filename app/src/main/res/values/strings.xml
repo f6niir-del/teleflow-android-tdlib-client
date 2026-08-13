@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">TeleFlow</string>
     <string name="configuration_required">Telegram configuration required</string>
-    <string name="configuration_description">Add your own Telegram API ID and API hash locally, then rebuild. TeleFlow never accepts or displays these credentials in its interface.</string>
-    <string name="configuration_hint">See README: Secure credential setup</string>
+    <string name="configuration_description">Enter your own Telegram API ID and API Hash. They are stored only in encrypted local storage on this device.</string>
+    <string name="configuration_hint">Create credentials at my.telegram.org/apps. Never share your API Hash.</string>
+    <string name="configuration_api_id">Telegram API ID</string>
+    <string name="configuration_api_hash">Telegram API Hash</string>
+    <string name="save_configuration">Save securely and continue</string>
+    <string name="configuration_invalid">Enter a valid numeric API ID and an API Hash of at least 16 characters.</string>
     <string name="welcome_title">Private, fast conversations</string>
     <string name="welcome_description">Sign in to your Telegram account through TDLib. Your phone number, verification code, and password are sent only to Telegram through TDLib and are never logged.</string>
     <string name="phone_number">Phone number</string>
