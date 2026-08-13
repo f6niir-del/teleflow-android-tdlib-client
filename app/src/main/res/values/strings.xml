@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">TeleFlow</string>
+    <string name="configuration_required">Telegram configuration required</string>
+    <string name="configuration_description">Add your own Telegram API ID and API hash locally, then rebuild. TeleFlow never accepts or displays these credentials in its interface.</string>
+    <string name="configuration_hint">See README: Secure credential setup</string>
+    <string name="welcome_title">Private, fast conversations</string>
+    <string name="welcome_description">Sign in to your Telegram account through TDLib. Your phone number, verification code, and password are sent only to Telegram through TDLib and are never logged.</string>
+    <string name="phone_number">Phone number</string>
+    <string name="continue_action">Continue</string>
+    <string name="verification_code">Verification code</string>
+    <string name="password">Two-step verification password</string>
+    <string name="resend_code">Resend code</string>
+    <string name="sign_in">Sign in</string>
+    <string name="log_out">Log out</string>
+    <string name="chats">Chats</string>
+    <string name="search_chats">Search chats</string>
+    <string name="all_chats">All</string>
+    <string name="unread_chats">Unread</string>
+    <string name="no_chats">No chats loaded yet</string>
+    <string name="no_chats_description">Your real Telegram conversations will appear here once TDLib has synchronized them.</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="loading">Loading…</string>
+    <string name="no_messages">No messages in this conversation yet.</string>
+    <string name="back">Back</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="retry">Retry</string>
+    <string name="qr_confirmation">Confirm on your other device</string>
+    <string name="qr_confirmation_description">Telegram asked you to confirm this sign-in from another authorized device.</string>
+    <string name="session_closed">Session closed</string>
+    <string name="offline">Offline</string>
+    <string name="telegram_error">Telegram could not complete the request. Check your connection and try again.</string>
+    <string name="blank_phone">Enter a phone number including country code.</string>
+    <string name="blank_code">Enter the verification code.</string>
+    <string name="blank_password">Enter your two-step verification password.</string>
+    <string name="authorization_waiting">Preparing secure Telegram session…</string>
+</resources>
