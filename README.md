@@ -64,7 +64,7 @@ TELEGRAM_API_HASH=replace_with_your_api_hash
 ```bash
 export TELEGRAM_API_ID=12345678
 export TELEGRAM_API_HASH=replace_with_your_api_hash
-./gradlew assembleDebug
+bash ./gradlew assembleDebug
 ```
 
 The project deliberately builds without credentials for CI and static verification. At runtime it displays a configuration-required screen until valid local credentials are supplied. Do not use Telegram's sample API ID for a released product; Telegram explicitly limits it to testing.
@@ -75,8 +75,8 @@ The project deliberately builds without credentials for CI and static verificati
 git clone https://github.com/f6niir-del/teleflow-android-tdlib-client.git
 cd teleflow-android-tdlib-client
 # Configure your credentials by one of the safe methods above.
-./gradlew testDebugUnitTest
-./gradlew assembleDebug
+bash ./gradlew testDebugUnitTest
+bash ./gradlew assembleDebug
 ```
 
 Install `app/build/outputs/apk/debug/app-debug.apk` on an Android device or emulator. TDLib requires real network access and an actual Telegram account to execute sign-in and messaging flows.
@@ -88,7 +88,7 @@ Install `app/build/outputs/apk/debug/app-debug.apk` on an Android device or emul
 3. Run the release build:
 
 ```bash
-./gradlew assembleRelease
+bash ./gradlew assembleRelease
 ```
 
 The unsigned artifact is written to `app/build/outputs/apk/release/`. Before public distribution, configure app signing, test against physical devices, review Telegram's terms, and provide the source code and notices required by all included licenses.
@@ -96,9 +96,9 @@ The unsigned artifact is written to `app/build/outputs/apk/release/`. Before pub
 ## Testing
 
 ```bash
-./gradlew testDebugUnitTest
-./gradlew connectedDebugAndroidTest  # requires an emulator/device
-./gradlew lintDebug
+bash ./gradlew testDebugUnitTest
+bash ./gradlew connectedDebugAndroidTest  # requires an emulator/device
+bash ./gradlew lintDebug
 ```
 
 The application does not claim that account-dependent flows have been tested without credentials and a real device. CI verifies compilation, static analysis, and unit tests without any secret configuration.
