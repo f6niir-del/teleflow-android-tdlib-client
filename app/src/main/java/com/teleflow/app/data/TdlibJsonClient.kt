@@ -31,7 +31,7 @@ class TdlibRequestException(message: String) : IllegalStateException(message)
 /** A single-client coroutine bridge for TDLib's asynchronous JSON interface. */
 class TdlibJsonClient(
     private val appContext: Context,
-    private val configuration: TelegramConfiguration,
+    @Volatile private var configuration: TelegramConfiguration,
     private val databaseKeyProvider: DatabaseKeyProvider
 ) {
     private val json = Json { ignoreUnknownKeys = true }
@@ -101,6 +101,11 @@ class TdlibJsonClient(
     }
 
     fun encryptionKey(): String = databaseKeyProvider.databaseKey()
+
+    fun reconfigure(newConfiguration: TelegramConfiguration) {
+        close()
+        configuration = newConfiguration
+    }
 
     fun close() {
         if (clientId == 0L) return

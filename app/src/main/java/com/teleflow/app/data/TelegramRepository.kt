@@ -26,7 +26,7 @@ import kotlinx.serialization.json.put
 /** Maps TDLib updates into small UI-ready state without fabricating conversations or messages. */
 class TelegramRepository(
     private val client: TdlibJsonClient,
-    private val configuration: TelegramConfiguration
+    private var configuration: TelegramConfiguration
 ) {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private val chatIndex = linkedMapOf<Long, TelegramChat>()
@@ -46,6 +46,16 @@ class TelegramRepository(
     val error: StateFlow<String?> = _error.asStateFlow()
 
     private var booted = false
+
+    fun configure(newConfiguration: TelegramConfiguration) {
+        if (!newConfiguration.isConfigured) return
+        configuration = newConfiguration
+        client.reconfigure(newConfiguration)
+        booted = false
+        _error.value = null
+        _authorization.value = AuthorizationState.Initializing
+        boot()
+    }
 
     fun boot() {
         if (booted || !configuration.isConfigured) return
