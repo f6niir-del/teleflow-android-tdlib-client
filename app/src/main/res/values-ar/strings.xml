@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">TeleFlow</string>
     <string name="configuration_required">يلزم إعداد Telegram</string>
-    <string name="configuration_description">أضف معرّف تطبيق Telegram وAPI Hash الخاصين بك محليًا، ثم أعد البناء. لا يستقبل TeleFlow هذه البيانات ولا يعرضها داخل الواجهة.</string>
-    <string name="configuration_hint">راجع README: إعداد بيانات الاعتماد الآمن</string>
+    <string name="configuration_description">أدخل معرّف Telegram وAPI Hash الخاصين بك. سيتم حفظهما في تخزين محلي مشفّر على هذا الجهاز فقط.</string>
+    <string name="configuration_hint">أنشئ البيانات من my.telegram.org/apps، ولا تشارك API Hash مع أي شخص.</string>
+    <string name="configuration_api_id">معرّف Telegram API</string>
+    <string name="configuration_api_hash">Telegram API Hash</string>
+    <string name="save_configuration">حفظ آمن ومتابعة</string>
+    <string name="configuration_invalid">أدخل معرّفًا رقميًا صالحًا وAPI Hash مكوّنًا من 16 حرفًا على الأقل.</string>
     <string name="welcome_title">محادثات خاصة وسريعة</string>
     <string name="welcome_description">سجّل الدخول إلى حساب Telegram عبر TDLib. يُرسل رقم الهاتف ورمز التحقق وكلمة المرور إلى Telegram عبر TDLib فقط، ولا يتم تسجيلها في السجلات.</string>
     <string name="phone_number">رقم الهاتف</string>
