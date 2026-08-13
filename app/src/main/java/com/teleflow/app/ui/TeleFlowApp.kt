@@ -54,6 +54,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -106,6 +107,7 @@ fun TeleFlowApp() {
     val layoutDirection = if (locale.language == "ar") LayoutDirection.Rtl else LayoutDirection.Ltr
     var darkMode by rememberSaveable { mutableStateOf(false) }
     var selectedChat by rememberSaveable { mutableStateOf<Long?>(null) }
+    var configurationError by rememberSaveable { mutableStateOf(false) }
 
     CompositionLocalProvider(androidx.compose.ui.platform.LocalLayoutDirection provides layoutDirection) {
         TeleFlowTheme(darkMode = darkMode) {
@@ -118,7 +120,12 @@ fun TeleFlowApp() {
                         onLoad = { viewModel.loadMessages(selectedChat!!) },
                         onSend = { value -> viewModel.send(selectedChat!!, value) }
                     )
-                    authorization == AuthorizationState.ConfigurationMissing -> ConfigurationScreen()
+                    authorization == AuthorizationState.ConfigurationMissing -> ConfigurationScreen(
+                        error = configurationError,
+                        onSubmit = { apiId, apiHash ->
+                            configurationError = !application.configureTelegram(apiId, apiHash)
+                        }
+                    )
                     authorization == AuthorizationState.Ready -> ChatListScreen(
                         chats = chats,
                         darkMode = darkMode,
@@ -146,12 +153,44 @@ fun TeleFlowApp() {
 }
 
 @Composable
-private fun ConfigurationScreen() = CenteredContent {
+private fun ConfigurationScreen(
+    error: Boolean,
+    onSubmit: (Int, String) -> Unit
+) = CenteredContent {
+    var apiId by rememberSaveable { mutableStateOf("") }
+    var apiHash by rememberSaveable { mutableStateOf("") }
+
     Text(stringResource(R.string.configuration_required), style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
     Spacer(Modifier.height(12.dp))
     Text(stringResource(R.string.configuration_description), style = MaterialTheme.typography.bodyLarge)
-    Spacer(Modifier.height(20.dp))
+    Spacer(Modifier.height(16.dp))
+    OutlinedTextField(
+        value = apiId,
+        onValueChange = { apiId = it.filter(Char::isDigit) },
+        label = { Text(stringResource(R.string.configuration_api_id)) },
+        singleLine = true,
+        modifier = Modifier.fillMaxWidth()
+    )
+    Spacer(Modifier.height(10.dp))
+    OutlinedTextField(
+        value = apiHash,
+        onValueChange = { apiHash = it },
+        label = { Text(stringResource(R.string.configuration_api_hash)) },
+        singleLine = true,
+        visualTransformation = PasswordVisualTransformation(),
+        modifier = Modifier.fillMaxWidth()
+    )
+    Spacer(Modifier.height(14.dp))
+    Button(
+        onClick = { onSubmit(apiId.toIntOrNull() ?: -1, apiHash) },
+        modifier = Modifier.fillMaxWidth()
+    ) { Text(stringResource(R.string.save_configuration)) }
+    Spacer(Modifier.height(10.dp))
     Text(stringResource(R.string.configuration_hint), color = MaterialTheme.colorScheme.primary)
+    if (error) {
+        Spacer(Modifier.height(10.dp))
+        Text(stringResource(R.string.configuration_invalid), color = MaterialTheme.colorScheme.error)
+    }
 }
 
 @Composable
