@@ -17,7 +17,7 @@ patterns=(
 
 failed=0
 for pattern in "${patterns[@]}"; do
-  if git grep -n -I -E "$pattern" -- ':!scripts/secret-scan.sh' ':!PROJECT_PROMPT.md'; then
+  if git grep -n -I -E -e "$pattern" -- ':!scripts/secret-scan.sh' ':!PROJECT_PROMPT.md'; then
     failed=1
   fi
 done
