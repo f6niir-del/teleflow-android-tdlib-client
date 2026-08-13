@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">TeleFlow</string>
+    <string name="configuration_required">يلزم إعداد Telegram</string>
+    <string name="configuration_description">أضف معرّف تطبيق Telegram وAPI Hash الخاصين بك محليًا، ثم أعد البناء. لا يستقبل TeleFlow هذه البيانات ولا يعرضها داخل الواجهة.</string>
+    <string name="configuration_hint">راجع README: إعداد بيانات الاعتماد الآمن</string>
+    <string name="welcome_title">محادثات خاصة وسريعة</string>
+    <string name="welcome_description">سجّل الدخول إلى حساب Telegram عبر TDLib. يُرسل رقم الهاتف ورمز التحقق وكلمة المرور إلى Telegram عبر TDLib فقط، ولا يتم تسجيلها في السجلات.</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="continue_action">متابعة</string>
+    <string name="verification_code">رمز التحقق</string>
+    <string name="password">كلمة مرور التحقق بخطوتين</string>
+    <string name="resend_code">إعادة إرسال الرمز</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="chats">المحادثات</string>
+    <string name="search_chats">البحث في المحادثات</string>
+    <string name="all_chats">الكل</string>
+    <string name="unread_chats">غير المقروءة</string>
+    <string name="no_chats">لم يتم تحميل محادثات بعد</string>
+    <string name="no_chats_description">ستظهر محادثات Telegram الحقيقية هنا فور مزامنتها عبر TDLib.</string>
+    <string name="message">رسالة</string>
+    <string name="send">إرسال</string>
+    <string name="loading">جارٍ التحميل…</string>
+    <string name="no_messages">لا توجد رسائل في هذه المحادثة بعد.</string>
+    <string name="back">رجوع</string>
+    <string name="dark_mode">المظهر الداكن</string>
+    <string name="retry">إعادة المحاولة</string>
+    <string name="qr_confirmation">أكّد من جهازك الآخر</string>
+    <string name="qr_confirmation_description">طلب Telegram تأكيد تسجيل الدخول هذا من جهاز آخر مصرح به.</string>
+    <string name="session_closed">أُغلقت الجلسة</string>
+    <string name="offline">دون اتصال</string>
+    <string name="telegram_error">تعذر على Telegram إتمام الطلب. تحقق من الاتصال ثم أعد المحاولة.</string>
+    <string name="blank_phone">أدخل رقم الهاتف متضمنًا رمز الدولة.</string>
+    <string name="blank_code">أدخل رمز التحقق.</string>
+    <string name="blank_password">أدخل كلمة مرور التحقق بخطوتين.</string>
+    <string name="authorization_waiting">جارٍ تجهيز جلسة Telegram آمنة…</string>
+</resources>
