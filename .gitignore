@@ -1,0 +1,34 @@
+# Build outputs and IDE metadata
+.gradle/
+build/
+**/build/
+.idea/
+*.iml
+*.ipr
+*.iws
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Android SDK and local configuration
+local.properties
+teleflow.properties
+*.keystore
+*.jks
+*.p12
+*.pem
+*.key
+
+# Secrets, credentials, sessions and diagnostic output
+.env
+.env.*
+secrets.properties
+credentials.properties
+*.token
+*.session
+*.log
+crashlytics-build.properties
+
+# OS files
+.DS_Store
+Thumbs.db
